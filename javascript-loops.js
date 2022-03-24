@@ -45,7 +45,19 @@ for(let index = 0; index < 10; index++) {
 for(let i = 0; i <= 10; i++){
   console.log(i)
 }
-___________________________
+//-->
+// 0
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+// 8
+// 9
+// 10
+// ___________________________
 
 // Infinite loop
 for(let i = 1; i > 0; i++ ) {
@@ -58,6 +70,17 @@ for(let i = 1; i > 0; i++ ) {
 for(let i = 10; i > 0; i--){
   console.log(i)
 }
+//-->
+// 10
+// 9
+// 8
+// 7
+// 6
+// 5
+// 4
+// 3
+// 2
+// 1
 //________________________________
 
 
@@ -67,6 +90,17 @@ for(let i = 0; i < numArray.length; i++){
   console.log("index", i)
   console.log("value", numArray[i])
 }
+// -->
+// index 0
+// value 5
+// index 1
+// value 6
+// index 2
+// value 7
+// index 3
+// value 8
+// index 4
+// value 9
 // ______________________________
 
 // Conditional If
@@ -77,10 +111,10 @@ for(let i = 0; i < numArray.length; i++){
     console.log(`${numArray[i]} is an odd number!`)
   }
 }
--->
-5 is an odd number!
-7 is an odd number!
-9 is an odd number!
+//-->
+// 5 is an odd number!
+// 7 is an odd number!
+// 9 is an odd number!
 // ___________________________________
 // Conditional If/Else
 const numArray = [5, 6, 7, 8, 9]
