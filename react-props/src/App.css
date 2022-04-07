@@ -1,0 +1,13 @@
+
+.tile {
+  color: blue;
+  border: solid 2px black;
+  width: 200px;
+}
+
+.last {
+    color: purple;
+    border: solid 2px black;
+    width: 200px;
+}
+
