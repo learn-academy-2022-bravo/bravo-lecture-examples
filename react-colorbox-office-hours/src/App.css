@@ -1,0 +1,16 @@
+.color-box {
+  border: 2px solid black;
+  height: 100px;
+  width: 100px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+h2 {
+  text-align: center;
+}
