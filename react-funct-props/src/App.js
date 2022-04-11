@@ -13,13 +13,10 @@ class App extends Component {
   }
 
   fillPlate = (item) => {
-    console.log("fillplate", item)
-    
     this.setState({plate: [...this.state.plate, item]})
   }
 
   render() {
-    console.log("state", this.state)
     return (
       <>
       <h1>Bravo BBQ</h1>
@@ -29,8 +26,8 @@ class App extends Component {
       <DynamicMenu menuItems={ this.state.petMenu } fillPlate={this.fillPlate}/>
       <h3>What's on Your Plate?</h3>
       <ul>
-        {this.state.plate.map(value => {
-          return <li>{value}</li>
+        {this.state.plate.map((value, index) => {
+            return <li key={index}>{value}</li>
         })}
       </ul>
       </>

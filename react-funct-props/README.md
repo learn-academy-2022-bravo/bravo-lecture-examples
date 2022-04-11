@@ -150,7 +150,8 @@ class App extends Component{
 
 export default App
 ```
-- In DynamicMenu.js (child component)
+
+- In DynamicMenu.js (child component), update the HOF
 ```javascript
 import React, { Component } from 'react'
 
@@ -171,5 +172,137 @@ class DynamicMenu extends Component{
 export default DynamicMenu
 ``` 
 
+### Functional Props - passing info back up the river, from child component to parent component
 
+- Add button to the list item
+```javascript
+        <ul>
+          {this.props.menuItems.map(value => {
+            return(
+              <li>
+                <button>{value}</button>
+              </li>
+            )
+          })}
+        </ul>
+```
 
+- Store new data in the state object on App.js
+```javascript
+  constructor(props){
+    super(props)
+    this.state = {
+      adultMenu: ["steak", "brisket", "margaritas"],
+      petMenu: ["cheese burgers", "puppocinos", "chicken"],
+      plate: []
+    }
+  }
+```
+- Designate a space to display that data on App.js
+```javascript
+      <h1>Bravo BBQ</h1>
+      <h2>Adult Menu</h2>
+      <DynamicMenu menuItems={ this.state.adultMenu } />
+      <h2>Pet Menu</h2>
+      <DynamicMenu menuItems={ this.state.petMenu } />
+      <h3>What's on Your Plate?</h3>
+      <ul>
+        {this.state.plate.map(value => {
+          return <li>{value}</li>
+        })}
+      </ul>
+```
+
+- create a function in App.js to pass the new data to DynamicMenu.js
+``` javascript
+fillPlate = (item) => {
+  alert(item)
+}
+```
+
+- pass function in the component call, using a variable to hold the function call
+```javascript
+      <h1>Bravo BBQ</h1>
+      <h2>Adult Menu</h2>
+      <DynamicMenu menuItems={ this.state.adultMenu } fillPlate={this.fillPlate}/>
+      <h2>Pet Menu</h2>
+      <DynamicMenu menuItems={ this.state.petMenu } fillPlate={this.fillPlate}/>
+      <h3>What's on Your Plate?</h3>
+      <ul>
+        {this.state.plate.map(value => {
+          return <li>{value}</li>
+        })}
+      </ul>
+```
+
+- allow onClick attribute on the child component to trigger the function, remember to include an argument
+```javascript
+        <ul>
+          {this.props.menuItems.map(value => {
+            return(
+              <li>
+                <button onClick={ this.props.fillPlate(value) }>
+                  {value}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+```
+
+- to prevent the function from immediately invoking add an anonymous that will allow the click event to occur before the function runs
+```javascript
+        <ul>
+          {this.props.menuItems.map(value => {
+            return(
+              <li>
+                <button onClick={ () => this.props.fillPlate(value) }>
+                  {value}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+```
+
+- update the function on App.js to reflect what is currently in the state object and to add what is being selected into the array being held by the key of plate
+``` javascript
+fillPlate = (item) => {
+  this.setState({plate: [...this.state.plate, item]})
+}
+```
+
+Best practice is to also consider the index of the arrays being used in our application. This consideration will clear the warning
+`Warning: Each child in a list should have a unique "key" prop.`
+
+- On the parent component
+```javascript
+        <h3>What's on your plate?</h3>
+        <ul>
+          {this.state.plate.map((value, index) => {
+            return <li key={index}>{value}</li>
+          })}
+        </ul>
+```
+
+- On the child component
+```javascript
+        <ul>
+          {this.props.menuItems.map((value, index) => {
+            return(
+              <li key={index}>
+                <button onClick={ this.props.fillPlate(value) }>
+                  {value}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+```
+
+### Pushing changes to gitHub
+- cd out of the project repository: $ cd ..
+- $ git status
+- $ git add .
+- $ git commit -m "message"
+- $ git push origin <branch-name>
