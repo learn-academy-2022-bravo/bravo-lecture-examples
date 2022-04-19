@@ -5,16 +5,16 @@
 # Object Oriented Programming (OOP)
   # allows us to describe real world objects as data
   
-#   guitar = {
-#             strings: 6,
-#             frets: 24,
-#             amp_input: true,
-#             model: "ephipnoe sg",
-#             color: "white",
-#             trim: "black"
-#           }
+  guitar = {
+            strings: 6,
+            frets: 24,
+            amp_input: true,
+            model: "ephipnoe sg",
+            color: "white",
+            trim: "black"
+          }
 
-# p guitar
+p guitar
 
 # Classes 
 # how we make objects in Ruby
@@ -46,33 +46,34 @@
           # getter methods
   # the instance variable is globally scoped 
     #  @
-# class Guitar
-#   def set_model parameter_model_name
-#     @model = parameter_model_name
-#   end
-#   def get_model
-#    @model
-#   end
-# end
 
-# elyses_guitar = Guitar.new
-# p elyses_guitar
+class Guitar
+  def set_model parameter_model_name
+    @model = parameter_model_name
+  end
+  def get_model
+   @model
+  end
+end
 
-# elyses_guitar.set_model "Yamaha FG-110-1"
-# p elyses_guitar
-# p elyses_guitar.get_model
+elyses_guitar = Guitar.new
+p elyses_guitar
 
+elyses_guitar.set_model "Yamaha FG-110-1"
+p elyses_guitar
+p elyses_guitar.get_model
 
-# class String
-#   def print_fast
-#     self.each_char do |c|
-#       sleep 0.1
-#       print c
-#     end
-#   end
-# end
+# We can even agument the built in classess to Ruby
+class String
+  def print_fast
+    self.each_char do |c|
+      sleep 0.1
+      print c
+    end
+  end
+end
 
-# p "Hello World Hello World Hello World Hello World Hello World".print_fast
+p "Hello World Hello World Hello World Hello World Hello World".print_fast
 
 # ruby has a method for declaring new instances of Classes with unique data called
   #  initialize
@@ -117,6 +118,7 @@ end
 
 
 # Class Inheritance
+  # Parent Class has attributes that are common to all possible children
 class Instrument
   def initialize in_tune_param, weight_param, material_param, operable_param
     @in_tune = in_tune_param
@@ -126,25 +128,29 @@ class Instrument
   end
 end
 
-cello = Instrument.new true, 7, "wood", true
-
+cello = Instrument.new true, 7, 'wood', true
+# alternative syntax
+# cello = Instrument.new(true, 7, 'wood', true)
 p cello
 
+
+
+# Child Classes has attributes that specific to the child and not the other children of the class.
 class Percussion < Instrument
   def initialize in_tune, weight, material, operable, sticks_param=true
-    super(in_tune, weight, material, operable)
+    super in_tune, weight, material, operable
     @sticks = sticks_param
   end
   def play_percussion
     if @sticks== true
-      "bratatataaaa"
+      'bratatataaaa'
     else
-     p "boom boom boom"
+     p 'boom boom boom'
     end
   end
 end
 
-nicoles_cajone = Percussion.new true, 2.5, "pine", true, false
+nicoles_cajone = Percussion.new true, 2.5, 'pine', true, false
 
 nicoles_cajone.play_percussion
 
@@ -165,9 +171,9 @@ class StringInstrument < Instrument
   end
   def play_strings
     if string_type
-      if string_type == "Ukelele"
-        p "🌈"
-      elsif string_type == "Bass"
+      if string_type == 'Ukelele'
+        p '🌈'
+      elsif string_type == 'Bass'
         p '🐠'
       else 
         p '🎸'
@@ -178,8 +184,8 @@ class StringInstrument < Instrument
   end
 end
 
-neco_stringed_instrument = StringInstrument.new true, 5, "bamboo", true, "Lani"
+neco_stringed_instrument = StringInstrument.new true, 5, 'bamboo', true, 'Lani'
 
-neco_stringed_instrument.string_type = "Ukelele"
+neco_stringed_instrument.string_type = 'Ukelele'
 
 neco_stringed_instrument.play_strings
