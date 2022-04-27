@@ -1,0 +1,18 @@
+<h1>Welcome to the Bravo Food truck</h1>
+
+<h3>What would you like to have today</h3>
+
+<h4> Prices </h4>
+<p> Entree Pricing $<%= @prices[:Entree] %></p>
+<p> Drinks Pricing $<%= @prices[:Drinks] %></p>
+<ul>
+  <li><%= link_to 'Tacos', '/jonathan' %></li>
+  <li><%= link_to 'Nachos', '/nachos' %></li>
+  <% @extended_menu.each do |value| %>
+  <li> <%= value %> </li>
+  <% end %>
+</ul>
+
+
+
+
