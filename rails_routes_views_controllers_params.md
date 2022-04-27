@@ -55,7 +55,7 @@ The Rials application allows us to write html in the app so that we can have a f
 app/views/food_truck/method_name.html.erb
 
 ## ERB 
-is an extension for HTML that allows to write ruby code alongside the HTML or inject it into our HTML
+is an extension for HTML that allows to write ruby code alongside the HTML or inject it into our HTML. In these files we can write HTML as normal but we can also use a new tag <% %> to inject ruby code into our file. 
 
 <h1></h1> 
 <table></table>
@@ -74,8 +74,39 @@ is an extension for HTML that allows to write ruby code alongside the HTML or in
 1. Made an app
 2. created a db
 3. generated a controller named FoodTruck
-4. set up a few routes
+4. set up a few routes 
 5. bounced back on screens making everyone sick
 6. rooted on of our routes
 8. make a couple of views using html.erb
 9. cleaned up our methods to allow rails to works it's magic and map the controller to the views themselves
+
+
+# Instance Variable
+The instance variable is declared in the method associated with the view and can be called in the view
+
+```ruby
+ def truck_menu
+    @prices = { "Entree": 10, "Drinks": 15}
+    @extended_menu = ["Funnel Cake", "Fried Pickels", "Cheeseburger", "Deep Fried Onions"]\
+  end
+
+  <% @extended_menu.each do |value| %>
+  <li> <%= value %> </li>
+  <% end %>
+```
+
+# Params
+
+
+# Recap 3
+1. Made an app
+2. created a db
+3. generated a controller named FoodTruck
+4. set up a few routes 
+5. bounced back on screens making everyone sick
+6. rooted on of our routes
+8. make a couple of views using html.erb
+9. cleaned up our methods to allow rails to works it's magic and map the controller to the views themselves
+10. We added instance variables to our methods that hold data and make the data available to our views
+11. we did logic in our views to display that data
+12. We created dynamic routes using params and called on those params inside our methods to use the data.
