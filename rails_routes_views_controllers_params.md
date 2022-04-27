@@ -82,7 +82,7 @@ is an extension for HTML that allows to write ruby code alongside the HTML or in
 
 
 # Instance Variable
-The instance variable is declared in the method associated with the view and can be called in the view
+The instance variable is declared in the method associated with the view and can be called in the view. Instance variables re very powerful as they are accessible to the entire class and therefore all of the views associated with that same controller. Naming conventions with Instance variables are very important. 
 
 ```ruby
  def truck_menu
@@ -96,7 +96,19 @@ The instance variable is declared in the method associated with the view and can
 ```
 
 # Params
+  Params are "the" way to dynamically pass information into our application using the URL. 
+  in order to set up our application for parasm we first set up the desired param in the routes our our routes.rb file
 
+  config/routes.rb
+  `get '/menu/:entree_price' => 'food_truck#truck_menu'`
+
+  then inside the controller we call on the key word "params" and pass the symbol we created in the route inside of the key notation. 
+
+  ```ruby
+     @prices = { "Entree": params[:entree_price], "Drinks": 12}
+  ```
+This will give us a hash as a return when our user navigates to the url and passes us a value.
+Key entree_price will have a value that is a string of whatever was passed in the URL.  
 
 # Recap 3
 1. Made an app
